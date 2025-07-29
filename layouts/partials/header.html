@@ -12,7 +12,9 @@
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
     <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-      <a href="{{ .URL }}"><span>{{ .Name }}</span></a>
+      <a href="{{ .URL }}"
+{{ if or (eq .Name "Livro") (eq .Name "Lattes") (hasPrefix .URL "http") }} target="_blank" {{end}}
+      ><span>{{ .Name }}</span></a>
       {{ end }}
     </li>
   </ul>
@@ -27,7 +29,9 @@
       {{ $currentPage := . }}
       {{ range $index, $element := .Site.Menus.main }}
         <li class="{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-          <a href="{{ .URL }}"><span>{{ .Name }}</span></a>
+          <a href="{{ .URL }}"
+{{ if or (eq .Name "Livro") (eq .Name "Lattes") (hasPrefix .URL "http") }} target="_blank" {{end}}
+          ><span>{{ .Name }}</span></a>
         </li>
       {{ end }}
     </ul>
